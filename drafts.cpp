@@ -3,18 +3,11 @@
 #include <stdio.h>
 
 using std::cout;
+using std::endl;
 
 //Do not run this
 
-int count = 0;
-void stackOverflow()
-{
-    cout << ++count << " ";
-    stackOverflow();
-}
-
 int main()
 {
-    stackOverflow();
-    return 0;
+    cout << "Hello world!" << endl;
 }
