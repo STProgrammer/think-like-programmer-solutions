@@ -3,6 +3,13 @@
 using std::cin;
 using std::cout;
 
+/*
+Luhn checksum without saving the numbers, processing each number one by one.
+*/
+
+
+
+
 int main()
 {
 

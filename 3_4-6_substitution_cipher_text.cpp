@@ -5,6 +5,11 @@
 
 using namespace std;
 
+/*
+Substitution cipher, generating random cipher array, ciphering a text and converting it back, all letter UPPER-CASE.
+Ciphering letters only, not punctuations. Using only arrays.
+*/
+
 int main()
 {
     const int NUM_CIPHER_CHARS = 26;

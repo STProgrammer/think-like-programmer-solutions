@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 
+/*
+Line of text statistics without using array or strings
+*/
+
 using std::cin;
 using std::cout;
 using std::endl;

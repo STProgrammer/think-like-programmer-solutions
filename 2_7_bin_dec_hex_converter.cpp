@@ -1,6 +1,10 @@
 #include <iostream>
 #include <math.h>
 
+/*
+Binary, hex and dec converter without using arrays.
+*/
+
 using std::cin;
 using std::cout;
 using std::pow;

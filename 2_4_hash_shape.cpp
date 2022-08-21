@@ -2,6 +2,10 @@
 #include <iostream>
 #include <iomanip>
 
+/*
+Hash shape by using only single cout functions.
+*/
+
 using std::cin;
 using std::cout;
 using std::endl;

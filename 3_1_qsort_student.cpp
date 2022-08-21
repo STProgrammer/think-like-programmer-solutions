@@ -1,5 +1,10 @@
 #include <iostream>
 
+
+/*
+Using QSORT to sort student structs based on grades and Student ID
+*/
+
 using namespace std;
 
 struct student {

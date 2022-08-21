@@ -6,7 +6,9 @@ using std::cout;
 using std::endl;
 using std::pow;
 
-
+/*
+Binary and decimal converter without using arrays (or strings)
+*/
 
 int main()
 {

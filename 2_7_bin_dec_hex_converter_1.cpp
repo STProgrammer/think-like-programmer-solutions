@@ -1,6 +1,11 @@
 #include <iostream>
 #include <string>
 
+/*
+Dec hex bin conversion with strings
+
+*/
+
 using std::cin;
 using std::cout;
 using std::string;
@@ -204,7 +209,7 @@ string hexToBinary(string hex)
     for (int i = 0; i < length; i++)
     {
         ch = hex[i];
-		
+
 		if (ch == ' ') continue;
 
         switch(ch)

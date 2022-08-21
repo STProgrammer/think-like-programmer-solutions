@@ -3,6 +3,10 @@
 
 using namespace std;
 
+/*
+Find mode, using arrays only.
+*/
+
 int main()
 {
     const int ARRAY_SIZE = 21;

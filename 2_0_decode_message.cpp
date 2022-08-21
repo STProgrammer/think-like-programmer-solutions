@@ -1,5 +1,10 @@
 #include <iostream>
 
+/*
+Decode a message from integers to text, without using arrays or strings.
+*/
+
+
 using std::cin;
 using std::cout;
 

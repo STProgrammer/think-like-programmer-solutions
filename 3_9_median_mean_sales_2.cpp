@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+Check if array is sorted or not
+*/
+
 int compareFunc(const void * val1, const void * val2);
 double getMedian(int arr[], const int ARR_SIZE);
 double getMedianWithQSort(int arr[], const int ARR_SIZE);

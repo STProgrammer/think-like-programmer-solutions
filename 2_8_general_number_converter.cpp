@@ -7,6 +7,9 @@ using std::cout;
 using std::endl;
 using std::pow;
 
+/*
+Converting numbers with different bases without using strings or arrays.
+*/
 
 void numberConverter(int baseX, int baseY);
 int toDecimalConverter(int baseX);

@@ -1,5 +1,10 @@
 #include <iostream>
 
+/*
+Find modes without using hash maps, just arrays.
+
+*/
+
 using std::cin;
 using std::cout;
 
@@ -41,7 +46,7 @@ int * findModes(int arr[], const int ARR_SIZE)
 
     int maxCount = 0;
     int val;
-    int nrOfValues = 0; // Nr of different values, in the examples above that is only 10 (numbers from 0 to 9).
+    int nrOfValues = 0; // Nr of different values in the array, in the examples above that is only 10 (numbers from 0 to 9).
     int nrOfModes = 0;
 
     for (int i = 0; i < ARR_SIZE; i++)

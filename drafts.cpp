@@ -2,27 +2,19 @@
 #include <cstring>  //For the string functions
 #include <stdio.h>
 
-using namespace std;
+using std::cout;
+
+//Do not run this
+
+int count = 0;
+void stackOverflow()
+{
+    cout << ++count << " ";
+    stackOverflow();
+}
 
 int main()
 {
-
-
-
-    double * x = new double;
-    *x = 3.4;
-    double y = *x;
-
-    delete(x);
-    cout << x << endl;
-
-}
-
-int * returnArray(int arr[])
-{
-    for(int i = 0; i < 10; i++)
-    {
-        arr[i] = 37;
-    }
-    return arr;
+    stackOverflow();
+    return 0;
 }

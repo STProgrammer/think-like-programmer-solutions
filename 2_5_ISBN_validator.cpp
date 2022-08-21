@@ -3,6 +3,11 @@
 using std::cin;
 using std::cout;
 
+/*
+ISBN validator without using arrays.
+*/
+
+
 enum isbnPart {PREFIX, GROUP, REGISTRANT, PUBLICATION, CHECK, COMPLETED};
 
 bool verifyPart(int nr, int digitCount, int part);
