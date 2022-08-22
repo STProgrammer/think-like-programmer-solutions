@@ -1,4 +1,5 @@
 #include <iostream>
+#define D_ARRAY_SIZE 10
 
 
 /*
@@ -18,8 +19,7 @@ int studentGradeCompareFunc(const void * voidA, const void * voidB);
 
 int main()
 {
-    const int ARRAY_SIZE = 10;  /* (AD): Prefer "#define D_ARRAY_SIZE 10" at top. */
-    student studentArray[ARRAY_SIZE] = {
+    student studentArray[D_ARRAY_SIZE] = {
         {81, 10009, "Aretha"},
         {70, 10008, "Candy"},
         {68, 10010, "Veronica"},
@@ -34,22 +34,23 @@ int main()
 
     int sizeOfStudentStruct = sizeof(student);
 
-    qsort(studentArray, ARRAY_SIZE, sizeOfStudentStruct, studentIdCompareFunc);
+    qsort(studentArray, D_ARRAY_SIZE, sizeOfStudentStruct, studentIdCompareFunc);
 
-    for (int i = 0; i < ARRAY_SIZE; i++)
+    for (int i = 0; i < D_ARRAY_SIZE; i++)
     {
         printf ("%d (%s) ", studentArray[i].studentId, studentArray[i].name);
     }
 
     cout << "\nThe top grades are:\n";
 
-    qsort(studentArray, ARRAY_SIZE, sizeOfStudentStruct, studentGradeCompareFunc);
+    qsort(studentArray, D_ARRAY_SIZE, sizeOfStudentStruct, studentGradeCompareFunc);
 
-    for (int i = 0; i < ARRAY_SIZE; i++)
+    for (int i = 0; i < D_ARRAY_SIZE; i++)
     {
         printf ("%s: %d \n", studentArray[i].name, studentArray[i].grade);
     }
-/* (AD): Missing return statement */
+
+    cin.get();
     return 0;
 }
 

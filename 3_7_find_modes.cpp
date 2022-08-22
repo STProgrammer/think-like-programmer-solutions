@@ -1,8 +1,8 @@
 #include <iostream>
+#define D_ARR_SIZE 30
 
 /*
 Find modes without using hash maps, just arrays.
-
 */
 
 using std::cin;
@@ -14,25 +14,25 @@ void printModes(int modesList[]);
 
 int main()
 {
-    const int ARR_SIZE = 30;
-    int noModeArr[ARR_SIZE] = {1,0,2,9,3,8,4,7,5,6,1,2,3,4,5,6,7,8,9,0,6,5,7,4,8,3,9,2,0,1}; // No mode
-    int oneModeArr[ARR_SIZE] = {1,0,2,9,3,8,4,7,5,6,1,2,3,4,5,6,7,8,9,0,6,5,7,4,5,3,9,2,0,1}; // Mode is 5
-    int twoModesArr[ARR_SIZE] = {1,0,2,9,3,8,4,7,5,6,1,2,3,4,5,4,7,8,9,0,6,5,7,4,8,3,9,2,0,0}; // Mode is 4 and 0
+    int noModeArr[D_ARR_SIZE] = {1,0,2,9,3,8,4,7,5,6,1,2,3,4,5,6,7,8,9,0,6,5,7,4,8,3,9,2,0,1}; // No mode
+    int oneModeArr[D_ARR_SIZE] = {1,0,2,9,3,8,4,7,5,6,1,2,3,4,5,6,7,8,9,0,6,5,7,4,5,3,9,2,0,1}; // Mode is 5
+    int twoModesArr[D_ARR_SIZE] = {1,0,2,9,3,8,4,7,5,6,1,2,3,4,5,4,7,8,9,0,6,5,7,4,8,3,9,2,0,0}; // Mode is 4 and 0
 
 
-    int * modesList = findModes(noModeArr, ARR_SIZE);
+    int * modesList = findModes(noModeArr, D_ARR_SIZE);
     printModes(modesList);
     delete[] modesList;
 
-    modesList = findModes(oneModeArr, ARR_SIZE);
+    modesList = findModes(oneModeArr, D_ARR_SIZE);
     printModes(modesList);
     delete[] modesList;
 
-    modesList = findModes(twoModesArr, ARR_SIZE);
+    modesList = findModes(twoModesArr, D_ARR_SIZE);
     printModes(modesList);
     delete[] modesList;
 
-
+    cin.get();
+    return 0;
 }
 
 

@@ -1,4 +1,6 @@
 #include <iostream>
+#define D_ARRAY_SIZE 10
+#define D_NUM_QUARTILES 4
 
 using namespace std;
 
@@ -14,10 +16,7 @@ int studentGradeCompareFunc(const void * voidA, const void * voidB);
 
 int main()
 {
-    const int ARRAY_SIZE = 10;
-    const int NUM_QUARTILES = 4;
-
-    student studentArray[ARRAY_SIZE] = {
+    student studentArray[D_ARRAY_SIZE] = {
         {81, 10009, "Aretha"},
         {70, 10008, "Candy"},
         {68, 10010, "Veronica"},
@@ -34,29 +33,35 @@ int main()
 
     int sizeOfStudentStruct = sizeof(student);
 
-    qsort(studentArray, ARRAY_SIZE, sizeOfStudentStruct, studentGradeCompareFunc);
+    qsort(studentArray, D_ARRAY_SIZE, sizeOfStudentStruct, studentGradeCompareFunc);
 
-    int quartileGrades[NUM_QUARTILES-1];
+    int quartileGrades[D_NUM_QUARTILES-1];
     int quartileIdx = 0;
 
-    for (int i = 0; i < NUM_QUARTILES-1; i++)
+    for (int i = 0; i < D_NUM_QUARTILES-1; i++)
     {
-        int dividend = (i+1)*(ARRAY_SIZE);
-        quartileIdx = dividend / NUM_QUARTILES;
-        if (dividend % NUM_QUARTILES != 0) quartileIdx += 1;
+        int dividend = (i+1)*(D_ARRAY_SIZE);
+        quartileIdx = dividend / D_NUM_QUARTILES;
+        if (dividend % D_NUM_QUARTILES != 0)
+        {
+            quartileIdx += 1;
+        }
         quartileGrades[i] = studentArray[quartileIdx-1].grade;
     }
 
 
-    for (int i = 1; i < NUM_QUARTILES; i++)
+    for (int i = 1; i < D_NUM_QUARTILES; i++)
     {
         printf("To be better than %d %% one would need to score higher than %d \n", (100*i)/4, quartileGrades[i-1]);
     }
 
-    for (int i = 0; i < ARRAY_SIZE; i++)
+    for (int i = 0; i < D_ARRAY_SIZE; i++)
     {
         printf ("%s: %d \n", studentArray[i].name, studentArray[i].grade);
     }
+
+    cin.get();
+    return 0;
 
 }
 

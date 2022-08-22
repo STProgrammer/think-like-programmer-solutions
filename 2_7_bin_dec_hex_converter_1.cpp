@@ -12,7 +12,7 @@ using std::string;
 using std::endl;
 using std::getline;
 
-/* (AD):Function names start with capital letter */
+
 string decimalToBinary(int dec);
 string decimalToHex(int dec);
 
@@ -25,8 +25,7 @@ string hexToBinary(string hex);
 
 int main()
 {
-
-    int dec;
+    int dec = 0;
     cout << "Type in decimal number and convert it to binary and hexadecimal:\n";
     cin >> dec;
     cin.ignore();
@@ -63,8 +62,7 @@ int main()
 
     cout << "The binary of " << hex << " is " << bin << endl;
 
-
-/* (AD): Missing return statement */
+    cin.get();
     return 0;
 
 }
@@ -72,9 +70,9 @@ int main()
 string decimalToBinary(int dec=0)
 {
     int temp = dec;
-    char digit = '0';
-    string binPart;
-    string bin;
+    char digit = 0;
+    string binPart = "";
+    string bin = "";
 
     do {
         binPart = "0000";
@@ -97,8 +95,8 @@ string decimalToBinary(int dec=0)
 string decimalToHex(int dec=0)
 {
     int temp = dec;
-    char digit = '0';
-    string hex;
+    char digit = 0;
+    string hex = "";
     int rest = 0;
     int i = 4; //Counting for digit space
 
@@ -123,7 +121,7 @@ string decimalToHex(int dec=0)
 int binaryToDecimal(string bin)
 {
     int dec = 0;
-    int digit;
+    int digit = 0;
 
     int length = bin.size();
 
@@ -140,14 +138,8 @@ int binaryToDecimal(string bin)
 
 string binaryToHex(string bin)
 {
-    /*int dec = binaryToDecimal(bin);
-
-    string hex = decimalToHex(dec);
-
-    return hex;*/
-
-    string hex;
-    char digit;
+    string hex = "";
+    char digit = 0;
 
     int length = bin.size()-1;
 
@@ -194,15 +186,9 @@ string binaryToHex(string bin)
 
 string hexToBinary(string hex)
 {
-    /*int dec = binaryToDecimal(bin);
-
-    string hex = decimalToHex(dec);
-
-    return hex;*/
-
-    string bin;
-    string binPart;
-    char ch;
+    string bin = "";
+    string binPart = "";
+    char ch = 0;
 
     int length = hex.size();
 
@@ -245,7 +231,7 @@ string hexToBinary(string hex)
 int hexToDecimal(string hex)
 {
     int dec = 0;
-    int digit;
+    int digit = 0;
 
     int length = hex.size();
 

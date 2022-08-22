@@ -14,10 +14,8 @@ int checkIfVowel(char ch);
 
 int main()
 {
-
-
     cout << "Write a line of text: " << endl;
-    char ch = ' ';
+    char ch = 0;
     int nrOfWords = 0;
 
     int wordLength = 0;
@@ -31,11 +29,22 @@ int main()
         ch = cin.get();
         if (checkIfPunctuation(ch))
         {
-            if (longestWordLen < wordLength) longestWordLen = wordLength;
-            if (highestNrOfVowels < nrOfVowels) highestNrOfVowels = nrOfVowels;
-            if (wordLength) nrOfWords++;
+            if (longestWordLen < wordLength)
+            {
+                longestWordLen = wordLength;
+            }
+            if (highestNrOfVowels < nrOfVowels)
+            {
+                highestNrOfVowels = nrOfVowels;
+            }
+            if (wordLength)
+            {
+                nrOfWords++;
+            }
             wordLength = nrOfVowels = 0;
-        } else {
+        }
+        else
+        {
             wordLength++;
             nrOfVowels += checkIfVowel(ch);
         }
@@ -51,39 +60,21 @@ int main()
 
     cin.get();
 
+    return 0;
+
 }
 
 
 bool checkIfPunctuation(char ch)
 {
     bool result = false;
-    switch(ch)
+
+    if ((ch < 'A' || ch > 'Z') & (ch < 'a' || ch > 'z'))
     {
-        /* (AD): Have single return statement */
-        /* (AD): case 10: result = 1; break; */
-        case 10: return 1; break;
-        case ' ': return 1; break;
-        case '\'': return 1; break;
-        case ',': return 1; break;
-        case '.': return 1; break;
-        case ':': return 1; break;
-        case ';': return 1; break;
-        case '-': return 1; break;
-        case '\\': return 1; break;
-        case '/': return 1; break;
-        case '!': return 1; break;
-        case '?': return 1; break;
-        case '+': return 1; break;
-        case '=': return 1; break;
-        case '(': return 1; break;
-        case ')': return 1; break;
-        case '%': return 1; break;
-        case '&': return 1; break;
-        case '$': return 1; break;
-        case '"': return 1; break;
-        case '#': return 1; break;
-        default: return 0; break;
+        result = true;
     }
+
+    return result;
 }
 
 
@@ -91,18 +82,42 @@ bool checkIfPunctuation(char ch)
 
 int checkIfVowel(char ch)
 {
+    bool isVowel = 0;
     switch(ch)
-    {   /* (AD): Have single return statement */
-        case 'a': return 1; break;
-        case 'e': return 1; break;
-        case 'i': return 1; break;
-        case 'o': return 1; break;
-        case 'u': return 1; break;
-        case 'A': return 1; break;
-        case 'E': return 1; break;
-        case 'I': return 1; break;
-        case 'O': return 1; break;
-        case 'U': return 1; break;
-        default: return 0; break;
+    {
+        case 'a':
+            isVowel = 1;
+            break;
+        case 'e':
+            isVowel = 1;
+            break;
+        case 'i':
+            isVowel = 1;
+            break;
+        case 'o':
+            isVowel = 1;
+            break;
+        case 'u':
+            isVowel = 1;
+            break;
+        case 'A':
+            isVowel = 1;
+            break;
+        case 'E':
+            isVowel = 1;
+            break;
+        case 'I':
+            isVowel = 1;
+            break;
+        case 'O':
+            isVowel = 1;
+            break;
+        case 'U':
+            isVowel = 1;
+            break;
+        default:
+            isVowel = 0;
+            break;
     }
+    return isVowel;
 }

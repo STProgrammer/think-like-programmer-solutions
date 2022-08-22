@@ -1,4 +1,6 @@
 #include <iostream>
+#define D_NUM_AGENTS 3
+#define D_NUM_MONTHS 12
 
 using namespace std;
 
@@ -7,44 +9,47 @@ Check if array is sorted or not
 */
 
 int compareFunc(const void * val1, const void * val2);
-double getMedian(int arr[], const int ARR_SIZE);
-double getMedianWithQSort(int arr[], const int ARR_SIZE);
-double getMean(int arr[], const int ARR_SIZE);
+float getMedian(int arr[], const int ARR_SIZE);
+float getMedianWithQSort(int arr[], const int ARR_SIZE);
+float getMean(int arr[], const int ARR_SIZE);
 
 int main()
 {
-    const int NUM_AGENTS = 3;
-    const int NUM_MONTHS = 12;
 
-
-    int sales[NUM_AGENTS][NUM_MONTHS] = {
+    int sales[D_NUM_AGENTS][D_NUM_MONTHS] = {
         {-1, -1, 30924, 87478, 328, 2653, 387, 3754, 387587, 2873, 276, 32},
         {5865, 5456, 3983, 6464, 9957, 4785, 3875, 3838, 4959, -1, -1, -1},
         {-1, 55, 67, 99, 265, 376, 232, 223, 4546, 564, 4544, -1}
     };
 
-    double median = 0;
-    double maxMedian = 0;
-    double mean = 0;
-    double maxMean = 0;
+    float median = 0;
+    float maxMedian = 0;
+    float mean = 0;
+    float maxMean = 0;
 
 
     //Using selection sort on its half
-    for (int agentIdx = 0; agentIdx < NUM_AGENTS; agentIdx++)
+    for (int agentIdx = 0; agentIdx < D_NUM_AGENTS; agentIdx++)
     {
 
-        //median = getMedian(sales[agentIdx], NUM_MONTHS);
-        median = getMedianWithQSort(sales[agentIdx], NUM_MONTHS);
-        if (maxMedian < median) maxMedian = median;
-        mean = getMean(sales[agentIdx], NUM_MONTHS);
-        if (maxMean < mean) maxMean = mean;
+        //median = getMedian(sales[agentIdx], D_NUM_MONTHS);
+        median = getMedianWithQSort(sales[agentIdx], D_NUM_MONTHS);
+        if (maxMedian < median)
+        {
+            maxMedian = median;
+        }
+        mean = getMean(sales[agentIdx], D_NUM_MONTHS);
+        if (maxMean < mean)
+        {
+            maxMean = mean;
+        }
     }
 
     //Printing the sorted lists
-    for (int i = 0; i < NUM_AGENTS; i++)
+    for (int i = 0; i < D_NUM_AGENTS; i++)
     {
         printf("\nAgent %d: ", i+1);
-        for (int j = 0; j < NUM_MONTHS; j++)
+        for (int j = 0; j < D_NUM_MONTHS; j++)
         {
             cout << sales[i][j] << " ";
         }
@@ -52,6 +57,9 @@ int main()
 
     printf("\nMax median sales is %.1f", maxMedian);
     printf("\nMax mean sales is %.1f", maxMean);
+
+    cin.get();
+    return 0;
 
 }
 
@@ -63,10 +71,10 @@ int compareFunc(const void * val1, const void * val2)
 }
 
 
-double getMedian(int arr[], const int ARR_SIZE)
+float getMedian(int arr[], const int ARR_SIZE)
 {
     // Using selection sort on its half
-    double median = 0;
+    float median = 0;
     // Find start index
     int startIdx = 0;
     while (arr[startIdx] == -1 && startIdx < ARR_SIZE)
@@ -84,8 +92,8 @@ double getMedian(int arr[], const int ARR_SIZE)
     bool odd = listSize % 2;
     int centerIdx = listSize / 2 + startIdx;
 
-    int minimum;
-    int minimumIdx;
+    int minimum = 0;
+    int minimumIdx = 0;
 
     for (int i = startIdx; i <= centerIdx; i++)
     {
@@ -104,17 +112,22 @@ double getMedian(int arr[], const int ARR_SIZE)
         arr[i] = minimum;
     }
 
-    if (odd) median = arr[centerIdx];
-    else median = (arr[centerIdx - 1] + arr[centerIdx]) / 2.0;
+    if (odd)
+    {
+        median = arr[centerIdx];
+    }
+    else
+    {
+        median = (arr[centerIdx - 1] + arr[centerIdx]) / 2.0;
+    }
     return median;
-
 }
 
 
 
-double getMedianWithQSort(int arr[], const int ARR_SIZE)
+float getMedianWithQSort(int arr[], const int ARR_SIZE)
 {
-    double median = 0;
+    float median = 0;
 
     // Find start slice
     int startSlice = 0;
@@ -138,16 +151,22 @@ double getMedianWithQSort(int arr[], const int ARR_SIZE)
     int * p_temp = &arr[startSlice];
 
     qsort(p_temp, listSize, sizeof(int), compareFunc);
-    if (odd) median = arr[centerIdx];
-    else median = (arr[centerIdx - 1] + arr[centerIdx]) / 2.0;
+    if (odd)
+    {
+        median = arr[centerIdx];
+    }
+    else
+    {
+        median = (arr[centerIdx - 1] + arr[centerIdx]) / 2.0;
+    }
     return median;
 }
 
 
-double getMean(int arr[], const int ARR_SIZE)
+float getMean(int arr[], const int ARR_SIZE)
 {
     int n = 0;
-    double sum = 0;
+    float sum = 0;
 
     for(int i = 0; i < ARR_SIZE; i++)
     {

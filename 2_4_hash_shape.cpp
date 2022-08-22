@@ -91,10 +91,9 @@ int main()
             hashWidth = hashWidth/2+2;
             change = -3;
             indentChange = -1;
-            //indent -= 2;
             part = BOTTOM;
         }
     }
-/* (AD): Missing return statement */
+    cin.get();
     return 0;
 }

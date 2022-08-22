@@ -16,7 +16,6 @@ int main()
 
     int shapeWidth = 8;
 
-    /* (AD): Go new line for curly braces to align them. Easier to follow complex loops. Don't worry about #of lines of code. */
     for (int row = 0; row < 4; row++)
     {
         cout << setw(row+1);
@@ -26,6 +25,6 @@ int main()
         }
         cout << "\n";
     }
-    /* (AD): Missing return statement */
+    cin.get();
     return 0;
 }

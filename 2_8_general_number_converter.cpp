@@ -11,7 +11,7 @@ using std::pow;
 Converting numbers with different bases without using strings or arrays.
 */
 
-/* (AD): Function names start with capital letter */
+
 void numberConverter(int baseX, int baseY);
 int toDecimalConverter(int baseX);
 void fromDecimalConverter(int dec, int baseY);
@@ -19,7 +19,7 @@ void fromDecimalConverter(int dec, int baseY);
 
 int main()
 {
-    int baseX, baseY;
+    int baseX = 0, baseY = 0;
 
     cout << "Type in the base of the number to convert from:\n";
     cin >> baseX;
@@ -32,6 +32,9 @@ int main()
     cout << "Type in the number: \n";
 
     numberConverter(baseX, baseY);
+
+    cin.get();
+    return 0;
 }
 
 
@@ -71,7 +74,7 @@ void fromDecimalConverter(int dec, int baseY)
     int c = 0;
     int n = -1;
     int digit = 0;
-    char charDigit = '0';
+    char charDigit = 0;
 
     while (temp) {
         n++;

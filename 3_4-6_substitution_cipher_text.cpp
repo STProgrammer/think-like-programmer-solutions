@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define D_NUM_CIPHER_CHARS 26
 
 using namespace std;
 
@@ -12,8 +13,6 @@ Ciphering letters only, not punctuations. Using only arrays.
 
 int main()
 {
-    const int NUM_CIPHER_CHARS = 26;
-
     char plainText[] = "THIS IS AN EXAMPLE PLAIN TEXT. THE TEXT IS CIPHERED \n"
             "USING CHAR ARRAY WHICH IS GENERATED RANDOMLY IN CODE.";
 
@@ -22,24 +21,24 @@ int main()
     char cipherText[textSize];
 
     // Generate cipherChars randomly (exercise 3.6)
-    char tempAlphabet[NUM_CIPHER_CHARS] = {
+    char tempAlphabet[D_NUM_CIPHER_CHARS] = {
         'A','B','C','D','E','F','G','H','I','J','K',
         'L','M','N','O','P','Q','R','S','T','U','V',
         'W','X','Y','Z'
     };
 
-    char cipherChars[NUM_CIPHER_CHARS];
+    char cipherChars[D_NUM_CIPHER_CHARS];
 
     srand(time(NULL));
     int chIdx = 0;
-    int randNum;
+    int randNum = 0;
 
-    for (int i = 0; i < NUM_CIPHER_CHARS; i++)
+    for (int i = 0; i < D_NUM_CIPHER_CHARS; i++)
     {
         chIdx = i;
         while (chIdx == i || tempAlphabet[chIdx] == -1)
         {
-            chIdx = rand() % 26;
+            chIdx = rand() % D_NUM_CIPHER_CHARS;
         }
         cipherChars[i] = tempAlphabet[chIdx];
         tempAlphabet[chIdx] = -1;
@@ -47,7 +46,7 @@ int main()
 
 
 
-    char ch = '0';
+    char ch = 0;
 
     // Producing cipher text (exercise 3.4)
     for (int i = 0; i < textSize; i++)
@@ -68,16 +67,16 @@ int main()
     cout << "Converting to plain text:" << endl;
 
     // Array generated to find corresponding character in alphabet faster
-    char cipherCharsIdxMap[NUM_CIPHER_CHARS];
+    char cipherCharsIdxMap[D_NUM_CIPHER_CHARS];
 
-    for (int i = 0; i < NUM_CIPHER_CHARS; i++)
+    for (int i = 0; i < D_NUM_CIPHER_CHARS; i++)
     {
         cipherCharsIdxMap[cipherChars[i] - 'A'] = i + 'A';
     }
 
 
     char plainText2[textSize];
-    plainText2[0] = '\0';
+    plainText2[0] = 0;
 
 
     for (int i = 0; i < textSize; i++)
@@ -94,4 +93,6 @@ int main()
     }
 
     cout << plainText2 << endl;
+    cin.get();
+    return 0;
 }

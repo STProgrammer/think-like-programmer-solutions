@@ -34,6 +34,6 @@ int main()
             continue;
         }
     }
-    /* (AD): Missing return statement */
+    cin.get();
     return 0;
 }

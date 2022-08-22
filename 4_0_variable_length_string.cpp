@@ -1,6 +1,7 @@
 #include <iostream>
 
 using std::cout;
+using std::cin;
 using std::endl;
 
 typedef char * arrayString;
@@ -33,6 +34,9 @@ int main()
     concatenate(str1, strToAdd);
     cout << "After concatenate: " << str1 << endl;
     cout << (void*) str1 << " " << (void*)strToAdd << endl;
+
+    cin.get();
+    return 0;
 
 }
 

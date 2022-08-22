@@ -32,26 +32,25 @@ int main()
 
 
     do {
-            ch = cin.get();
-            digitCount++;
-            if(ch == '-' || ch == 10) {
-                if (!verifyPart(nr, digitCount, part)) {
-                    invalidNr = true;
-                    break;
-                }
-                part = ++part % 6;
-                digitCount = nr = 0;
-            } else {
-                nr = nr*10 + (ch - '0');
-                digit = ch - '0';
-                totalDigitCount++;
-
-                checkSum += (pos % 2 == 0) ? digit * 3: digit;
-
-                pos++;
+        ch = cin.get();
+        digitCount++;
+        if(ch == '-' || ch == 10)
+            {
+            if (!verifyPart(nr, digitCount, part))
+            {
+                invalidNr = true;
+                break;
             }
-
-        } while(ch != 10);
+            part = ++part % 6;
+            digitCount = nr = 0;
+        } else {
+            nr = nr*10 + (ch - '0');
+            digit = ch - '0';
+            totalDigitCount++;
+            checkSum += (pos % 2 == 0) ? digit * 3: digit;
+            pos++;
+        }
+    } while(ch != 10);
 
 
     // Check if the number is too long
@@ -61,47 +60,59 @@ int main()
     }
 
     // Check if the number is valid in its format
-    if (invalidNr || part < CHECK || part > COMPLETED) {
+    if (invalidNr || part < CHECK || part > COMPLETED)
+    {
         cout << "The number is not valid!\n";
     } // Then get the checksum digit
-    else if (part == CHECK) {
+    else if (part == CHECK)
+    {
         int checkDigit = 10 - checkSum % 10;
         cout << "The check digit is " << checkDigit << " \n";
     } // Else check the checksum
-    else if (part == COMPLETED) {
-        if (checkSum % 10 == 0) {
+    else if (part == COMPLETED)
+    {
+        if (checkSum % 10 == 0)
+        {
             cout << "The ISBN is valid\n";
         } else {
             cout << "The ISBN is not valid\n";
         }
     }
-
+    else
+    {
+        cout << "Something went wrong!\n";
+    }
+    cin.get();
+    return 0;
 }
 
 
 bool verifyPart(int nr, int digitCount, int part)
 {
-    switch(part) {
-    case PREFIX:
-        return (nr == 978 || nr == 979);
-        break;
-    case GROUP:
-        return (digitCount >= 1 && digitCount <= 5);
-        break;
-    case REGISTRANT:
-        return (digitCount >= 1 && digitCount <= 6);
-        break;
-    case PUBLICATION:
-        return (digitCount >= 1 && digitCount <= 7);
-        break;
-    case CHECK:
-        return (nr < 10 || nr >= 0);
-        break;
-    case COMPLETED:
-        return false;
-        break;
-    default:
-        return false;
+    bool isVerified = false;
+    switch(part)
+    {
+        case PREFIX:
+            isVerified = (nr == 978 || nr == 979);
+            break;
+        case GROUP:
+            isVerified = (digitCount >= 1 && digitCount <= 5);
+            break;
+        case REGISTRANT:
+            isVerified = (digitCount >= 1 && digitCount <= 6);
+            break;
+        case PUBLICATION:
+            isVerified = (digitCount >= 1 && digitCount <= 7);
+            break;
+        case CHECK:
+            isVerified = (nr < 10 || nr >= 0);
+            break;
+        case COMPLETED:
+            isVerified = false;
+            break;
+        default:
+            isVerified = false;
     }
+    return isVerified;
 
 }

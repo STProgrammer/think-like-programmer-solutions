@@ -53,6 +53,6 @@ int main()
         indent += change;
 
     }
-    /* (AD): Missing return statement */
+    cin.get();
     return 0;
 }

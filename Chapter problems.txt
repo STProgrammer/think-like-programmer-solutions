@@ -1,3 +1,0 @@
-Chapter 2: problems solved without using arrays or some data structures
-
-Chapter 3: problems solved using arrays only.

@@ -28,8 +28,7 @@ int main()
         cout << "This is a simple program to convert between decimal, binary and hexadecimal numbers." << endl;
 
         cout << "Select number type to convert from by typing a single number and pressing enter: " << endl;
-        cout << " 1) decimal \n 2) binary \n 3) hexadecimal \n ";
-
+        cout << " 1) decimal \n 2) binary \n 3) hexadecimal 0) to quit \n ";
 
         cin >> choice;
         cin.ignore();
@@ -57,7 +56,10 @@ int main()
                 cout << "The hexadecimal of " << dec << " is:" << endl;
                 decimalToHex(dec);
             }
-            /* (AD): Try to have else for all if statements. Easier to debug mistakes! */
+            else
+            {
+                cout << "Your choice is invalid!\n";
+            }
         }
         else if (choice == 2)
         {
@@ -76,6 +78,10 @@ int main()
             {
                 cout << "Type in binary number and convert it to hexadecimal:\n";
                 binaryToHex();
+            }
+            else
+            {
+                cout << "Your choice is invalid!\n";
             }
         }
         else if (choice == 3)
@@ -96,18 +102,24 @@ int main()
                 cout << "Type in hexadecimal number and convert it to binary:\n";
                 hexToBinary();
             }
+            else
+            {
+                cout << "Your choice is invalid!\n";
+            }
+        }
+        else
+        {
+            cout << "Your choice is invalid!\n";
         }
         cout << "Do you want to repeat? Press any number and enter to repeat, press 0 and enter to quit.\n";
         cin >> choice;
         cin.ignore();
     }
 
-/* (AD): Missing return statement */
     return 0;
 }
 
 
-/* (AD): DecimalToBinary */
 void decimalToBinary(int dec)
 {
     int temp = dec;
@@ -121,8 +133,7 @@ void decimalToBinary(int dec)
     }
     temp = dec;
 
-    do
-    {
+    do {
         c = pow(2, n--);
         digit = (temp / c) % 2;
         cout << digit;
@@ -132,14 +143,13 @@ void decimalToBinary(int dec)
 }
 
 
-/* (AD):DecimalToHex */
 void decimalToHex(int dec)
 {
     int temp = dec;
     int c = 0;
     int n = -1;
     int digit = 0;
-    char charDigit = '0';
+    char charDigit = 0;
 
     while (temp)
     {
@@ -159,11 +169,11 @@ void decimalToHex(int dec)
     cout << "\n";
 }
 
-/* (AD):BinaryToDecimal */
+
 int binaryToDecimal()
 {
     int digitSize = 32;
-    char ch = '0';
+    char ch = 0;
     int dec = 0;
     int digitCount = 0;
     while(ch != 10 || digitCount >= digitSize)
@@ -177,19 +187,20 @@ int binaryToDecimal()
 }
 
 
-/* (AD): BinaryToHex */
 void binaryToHex(int dec)
 {
-    if(!dec) dec = binaryToDecimal();   /* (AD):Prefer curly braces even single line statements. Don't worry about the code length. */
-
+    if(!dec)
+    {
+        dec = binaryToDecimal();
+    }
     decimalToHex(dec);
 }
 
-/* (AD):HexToDecimal */
+
 int hexToDecimal()
 {
     int digitSize = 8;
-    char ch = '0';
+    char ch = 0;
     int dec = 0;
     int digitCount = 0;
     while(ch != 10 || digitCount >= digitSize)
@@ -204,15 +215,18 @@ int hexToDecimal()
 }
 
 
-/* (AD):HexToBinary */
+
 void hexToBinary()
 {
-    char charDigit = '0';
+    char charDigit = 0;
 
     while(charDigit != 10)
     {
         charDigit = cin.get();
-        if (charDigit == ' ' || charDigit == 10) continue;
+        if (charDigit == ' ' || charDigit == 10)
+        {
+            continue;
+        }
         switch(charDigit)
         {
             case '0': cout << "0000 "; break;
