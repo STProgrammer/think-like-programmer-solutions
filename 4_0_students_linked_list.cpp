@@ -44,6 +44,7 @@ void addRecord(studentCollection& sc, int stuNum, int gr)
 
 double averageRecord(studentCollection sc)
 {
+    if (sc = = NULL) return 0;
     int count = 0;
     double sum = 0;
     listNode * loopPtr = sc;
