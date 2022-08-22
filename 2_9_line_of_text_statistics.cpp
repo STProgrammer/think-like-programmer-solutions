@@ -26,7 +26,8 @@ int main()
     int nrOfVowels = 0;
     int highestNrOfVowels = 0;
 
-    do {
+    do
+    {
         ch = cin.get();
         if (checkIfPunctuation(ch))
         {
@@ -55,8 +56,11 @@ int main()
 
 bool checkIfPunctuation(char ch)
 {
+    bool result = false;
     switch(ch)
     {
+        /* (AD): Have single return statement */
+        /* (AD): case 10: result = 1; break; */
         case 10: return 1; break;
         case ' ': return 1; break;
         case '\'': return 1; break;
@@ -88,7 +92,7 @@ bool checkIfPunctuation(char ch)
 int checkIfVowel(char ch)
 {
     switch(ch)
-    {
+    {   /* (AD): Have single return statement */
         case 'a': return 1; break;
         case 'e': return 1; break;
         case 'i': return 1; break;

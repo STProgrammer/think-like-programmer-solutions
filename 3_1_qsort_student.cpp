@@ -18,7 +18,7 @@ int studentGradeCompareFunc(const void * voidA, const void * voidB);
 
 int main()
 {
-    const int ARRAY_SIZE = 10;
+    const int ARRAY_SIZE = 10;  /* (AD): Prefer "#define D_ARRAY_SIZE 10" at top. */
     student studentArray[ARRAY_SIZE] = {
         {81, 10009, "Aretha"},
         {70, 10008, "Candy"},
@@ -49,7 +49,8 @@ int main()
     {
         printf ("%s: %d \n", studentArray[i].name, studentArray[i].grade);
     }
-
+/* (AD): Missing return statement */
+    return 0;
 }
 
 

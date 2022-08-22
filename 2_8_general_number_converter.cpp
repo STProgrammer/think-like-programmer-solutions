@@ -11,6 +11,7 @@ using std::pow;
 Converting numbers with different bases without using strings or arrays.
 */
 
+/* (AD): Function names start with capital letter */
 void numberConverter(int baseX, int baseY);
 int toDecimalConverter(int baseX);
 void fromDecimalConverter(int dec, int baseY);

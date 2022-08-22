@@ -12,7 +12,7 @@ Binary and decimal converter without using arrays (or strings)
 
 int main()
 {
-    int dec;
+    int dec;        /* (AD): Initialize */
     int integerSize = 32;
 
     cout << "Type in decimal number to convert to binary:\n";
@@ -28,13 +28,15 @@ int main()
     int c = 0;
     int n = -1;
     int digit = 0;
-    while (temp) {
+    while (temp)
+    {
         n++;
         temp /= 2;
     }
     temp = dec;
 
-    do {
+    do
+    {
         c = pow(2, n--);
         digit = (temp / c) % 2;
         cout << digit;
@@ -58,4 +60,6 @@ int main()
     cout << dec;
 
     cin.get();
+    /* (AD): Missing return statement */
+    return 0;
 }

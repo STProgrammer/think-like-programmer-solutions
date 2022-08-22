@@ -12,6 +12,7 @@ using std::string;
 using std::endl;
 using std::getline;
 
+/* (AD):Function names start with capital letter */
 string decimalToBinary(int dec);
 string decimalToHex(int dec);
 
@@ -63,7 +64,8 @@ int main()
     cout << "The binary of " << hex << " is " << bin << endl;
 
 
-
+/* (AD): Missing return statement */
+    return 0;
 
 }
 

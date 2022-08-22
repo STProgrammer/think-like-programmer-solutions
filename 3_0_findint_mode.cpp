@@ -61,6 +61,7 @@ int main()
     {
         cout << "The mode is " << mode << endl;
     }
-
+/* (AD): Missing return statement */
+    return 0;
 }
 

@@ -32,7 +32,8 @@ int main()
             cout << "#";
         }
     }
-
+    /* (AD): Missing return statement */
+    return 0;
 }
 
 

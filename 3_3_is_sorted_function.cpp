@@ -7,7 +7,7 @@ bool isArraySorted(int arr[], int arrSize);
 
 int main()
 {
-    const int ARRAY_SIZE = 10;
+    const int ARRAY_SIZE = 10;  /* (AD): #define D_ARRAY_SIZE 10 */
 
     int arr1[ARRAY_SIZE] = {1,6,3,1,2,4,9,6,4,2};
 
@@ -22,7 +22,8 @@ int main()
 
     if (isSorted) printf("Array is sorted\n");
     else printf("Array is not sorted\n");
-
+/* (AD): Missing return statement */
+return 0;
 }
 
 

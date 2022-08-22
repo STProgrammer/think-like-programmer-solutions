@@ -30,20 +30,25 @@ int main()
 
 
 
-    for (int hashWidth=2; hashWidth > 0; hashWidth+=change) {
+    for (int hashWidth=2; hashWidth > 0; hashWidth+=change)
+    {
         pos = LEFT;
         cout << part;
 
-        while (pos != NEXT) {
+        while (pos != NEXT)
+        {
             if (pos == LEFT)
             {
                 cout << setw(indent+extraIndent);
                 indent += indentChange;
-            } else {
+            }
+            else
+            {
                 cout << setw(space);
                 space += spaceChange;
             }
-            for (int hashNum = 0; hashNum < hashWidth; hashNum++) {
+            for (int hashNum = 0; hashNum < hashWidth; hashNum++)
+            {
                 cout << "#";
             }
 
@@ -52,7 +57,8 @@ int main()
             {
                 pos = ++pos % 3;
             }
-            else {
+            else
+            {
                 pos = NEXT;
             }
 
@@ -88,7 +94,7 @@ int main()
             //indent -= 2;
             part = BOTTOM;
         }
-
     }
-
+/* (AD): Missing return statement */
+    return 0;
 }

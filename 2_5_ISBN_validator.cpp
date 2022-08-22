@@ -7,7 +7,7 @@ using std::cout;
 ISBN validator without using arrays.
 */
 
-
+/* (AD): Define a new type for enum (T_ISBNPART_ENUM) and name enums as T_ISBNPART_PREFIX, T_ISBNPART_GROUP... */
 enum isbnPart {PREFIX, GROUP, REGISTRANT, PUBLICATION, CHECK, COMPLETED};
 
 bool verifyPart(int nr, int digitCount, int part);

@@ -23,10 +23,13 @@ int main()
     int change = 1;
 
 
-    for (int width = 1; width > 0; width += change) {
+    for (int width = 1; width > 0; width += change)
+    {
         pos = LEFT;
-        while (pos != NEXT) {
-            if (pos == LEFT) {
+        while (pos != NEXT)
+        {
+            if (pos == LEFT)
+            {
                 cout << setw(indent);
             }
             else {
@@ -50,4 +53,6 @@ int main()
         indent += change;
 
     }
+    /* (AD): Missing return statement */
+    return 0;
 }

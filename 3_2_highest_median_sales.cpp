@@ -6,14 +6,15 @@ using namespace std;
 Highest median sales using arrays only
 */
 
+/* (AD): Function names start with capital letter */
 int compareFunc(const void * val1, const void * val2);
 double getMedian(int arr[], const int ARR_SIZE);
 double getMedianWithQSort(int arr[], const int ARR_SIZE);
 
 int main()
 {
-    const int NUM_AGENTS = 3;
-    const int NUM_MONTHS = 12;
+    const int NUM_AGENTS = 3;   /* (AD): #define D_NUM_AGENTS 3  */
+    const int NUM_MONTHS = 12;  /* (AD): #define D_NUM_MONTHS 12 */
 
 
     int sales[NUM_AGENTS][NUM_MONTHS] = {
@@ -46,7 +47,8 @@ int main()
     }
 
     printf("\nMax median sales is %.1f", maxMedian);
-
+/* (AD): Missing return statement */
+return 0;
 }
 
 
