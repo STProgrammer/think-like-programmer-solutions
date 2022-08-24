@@ -33,7 +33,18 @@ int main()
     cout << "String to add: " << strToAdd << endl;
     concatenate(str1, strToAdd);
     cout << "After concatenate: " << str1 << endl;
+
+    for (int i = 0; i < 8; i++)
+    {
+        cout << "index " << i << endl;
+        cout << "char " << str1[i] << endl;
+    }
+
     cout << (void*) str1 << " " << (void*)strToAdd << endl;
+
+    delete[] str;
+    delete[] str1;
+    delete[] strToAdd;
 
     cin.get();
     return 0;
@@ -60,6 +71,8 @@ void append(arrayString &str, char ch)
     str = newStr;
 }
 
+
+
 void concatenate(arrayString &str1, arrayString str2)
 {
     int len1 = length(str1);
@@ -79,6 +92,8 @@ void concatenate(arrayString &str1, arrayString str2)
     str1 = newStr;
 }
 
+
+
 int length(arrayString str)
 {
     int len = 0;
@@ -88,4 +103,7 @@ int length(arrayString str)
     }
     return len;
 }
+
+
+
 

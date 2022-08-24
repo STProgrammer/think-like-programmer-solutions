@@ -15,7 +15,7 @@ typedef listNode * intLinkedList;
 void printInteger(intLinkedList integer);
 intLinkedList intToList(int num);
 intLinkedList sumIntLists(intLinkedList integer1, intLinkedList integer2);
-
+void removeLinkedList(intLinkedList &head);
 
 int main()
 {
@@ -31,6 +31,10 @@ int main()
     printInteger(integer2);
     cout << "\nTheir sum is: ";
     printInteger(sum);
+
+    removeLinkedList(integer1);
+    removeLinkedList(integer2);
+    removeLinkedList(sum);
 
     cin.get();
     return 0;
@@ -97,6 +101,21 @@ void printInteger(intLinkedList integer)
         cout << loopPtr->num;
         loopPtr = loopPtr->next;
     }
+}
+
+void removeLinkedList(intLinkedList &head)
+{
+    listNode * loopPtr = head;
+    listNode * deleteNode;
+
+    while (loopPtr != nullptr)
+    {
+        deleteNode = loopPtr;
+        loopPtr = loopPtr->next;
+        delete deleteNode;
+    }
+    head = nullptr;
+    return;
 }
 
 

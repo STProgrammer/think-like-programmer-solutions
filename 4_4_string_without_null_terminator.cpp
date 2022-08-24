@@ -42,6 +42,10 @@ int main()
     cout << "\n";
     cout << (void*) str1 << " " << (void*)strToAdd << endl;
 
+    delete[] str;
+    delete[] str1;
+    delete[] strToAdd;
+
     cin.get();
     return 0;
 

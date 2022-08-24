@@ -7,18 +7,29 @@ using std::endl;
 
 //Do not run this
 
+struct test {
+    int num;
+    test * next;
+};
+
 int main()
 {
+    test * loopPtr = nullptr;
+    test * head = nullptr;
 
-    int *p = new int[2];
-    p[0] = 14;
-    p[1] = 19;
 
-    int* t = new int[2];
-    t[0] = 14;
-    t[1] = 17;
+    loopPtr = new test;
+    head = loopPtr;
+    loopPtr->num = 14;
+    loopPtr->next = nullptr;
+    cout << head->num << endl;
+    loopPtr->next = new test;
+    loopPtr = loopPtr->next;
+    loopPtr->num = 89;
 
-    cout << (*t == *p) << endl;
+    cout << head->next->num << endl;
+
+
 
     return 0;
 }

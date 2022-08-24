@@ -56,6 +56,9 @@ int main()
 
     printModes(modesList);
 
+    delete[] numList;
+    delete[] modesList;
+
 
     cin.get();
     return 0;

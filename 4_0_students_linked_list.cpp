@@ -13,6 +13,10 @@ struct listNode {
 
 typedef listNode * studentCollection;
 
+void removeLinkedList(studentCollection &head);
+void addRecord(studentCollection& sc, int stuNum, int gr);
+double averageRecord(studentCollection sc);
+
 int main()
 {
     studentCollection sc = nullptr;
@@ -29,6 +33,8 @@ int main()
     node2->next = node3;
     node3->next = nullptr;
     node1 = node2 = node3 = nullptr;
+
+    removeLinkedList(sc);
 
     cin.get();
     return 0;
@@ -61,3 +67,18 @@ double averageRecord(studentCollection sc)
     return average;
 }
 
+void removeLinkedList(studentCollection &head)
+{
+
+    listNode * loopPtr = head;
+    listNode * deleteNode;
+
+    while (loopPtr != nullptr)
+    {
+        deleteNode = loopPtr;
+        loopPtr = loopPtr->next;
+        delete deleteNode;
+    }
+    head = nullptr;
+    return;
+}

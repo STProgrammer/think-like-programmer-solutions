@@ -17,7 +17,7 @@ void printNodes(studentCollection sc);
 void addRecord(studentCollection& sc, int studNum, int gr);
 void removeRecord(studentCollection& sc, int studNum);
 double averageRecord(studentCollection sc);
-
+void removeLinkedList(studentCollection &head);
 
 int main()
 {
@@ -35,6 +35,8 @@ int main()
     printNodes(sc);
 
     cout << "The average record is: " << averageRecord(sc) << endl;
+    removeLinkedList(sc);
+
 
     cin.get();
     return 0;
@@ -108,5 +110,22 @@ double averageRecord(studentCollection sc)
     }
     double average = sum / count;
     return average;
+}
+
+
+void removeLinkedList(studentCollection &head)
+{
+
+    listNode * loopPtr = head;
+    listNode * deleteNode;
+
+    while (loopPtr != nullptr)
+    {
+        deleteNode = loopPtr;
+        loopPtr = loopPtr->next;
+        delete deleteNode;
+    }
+    head = nullptr;
+    return;
 }
 

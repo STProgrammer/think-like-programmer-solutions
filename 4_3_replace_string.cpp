@@ -31,6 +31,10 @@ int main()
     replaceString(source, target, replaceText);
     printf("The result is: %s ", source);
 
+    delete[] source;
+    delete[] target;
+    delete[] replaceText;
+
     cin.get();
     return 0;
 

@@ -17,6 +17,7 @@ char characterAt(stringLinkedList str, int pos);
 void printString(stringLinkedList str);
 void concatenate(stringLinkedList &str1, stringLinkedList str2);
 void removeChars(stringLinkedList &str, int startIdx, int nrOfChars);
+void removeLinkedList(stringLinkedList &head)
 
 int main()
 {
@@ -55,6 +56,9 @@ int main()
 
     printf("Removed %d characters starting from index %d running removeChars() function:\n", nrOfChars, startIdx);
     printString(str);
+
+    removeLinkedList(str);
+    removeLinkedList(str2);
 
     cin.get();
     return 0;
@@ -201,6 +205,22 @@ void concatenate(stringLinkedList &str1, stringLinkedList str2)
 
 }
 
+
+void removeLinkedList(stringLinkedList &head)
+{
+
+    listNode * loopPtr = head;
+    listNode * deleteNode;
+
+    while (loopPtr != nullptr)
+    {
+        deleteNode = loopPtr;
+        loopPtr = loopPtr->next;
+        delete deleteNode;
+    }
+    head = nullptr;
+    return;
+}
 
 
 

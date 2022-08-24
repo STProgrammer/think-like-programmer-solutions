@@ -28,12 +28,15 @@ int main()
 
 
     int startPos = 3;
-    int len = ;
+    int len = 2;
 
     arrayString newStr = substring(str, startPos, len);
 
     cout << "The string: " << str << endl;
     cout << "The substring: " << newStr << endl;
+
+    delete[] str;
+    delete[] newStr;
 
     cin.get();
     return 0;
@@ -44,8 +47,6 @@ int main()
 arrayString substring(arrayString str, int startPos, int len)
 {
     arrayString newStr = new char[len+1];
-
-    startPos--;
 
     int strLength = length(str);
 
