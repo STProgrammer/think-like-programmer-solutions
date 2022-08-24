@@ -1,48 +1,66 @@
 #include <iostream>
+#define D_ARRAY_SIZE 12
+
 
 using std::cout;
 using std::cin;
 using std::endl;
+
 
 typedef char * arrayString;
 
 void append(arrayString &str, char ch);
 void concatenate(arrayString &str1, arrayString str2);
 char characterAt(arrayString str, int position);
+arrayString substring(arrayString str, int startPos, int len);
 int length(arrayString str);
 
 int main()
 {
-    arrayString str = new char[5];
-    str[0] = 'T'; str[1] = 'e'; str[2] = 's'; str[3] = 't'; str[4] = 0;
+    arrayString str = new char[D_ARRAY_SIZE];
+
+    for(int i = 0; i < D_ARRAY_SIZE-1;i++)
+    {
+        str[i] = 'a' + i;
+    }
+    str[D_ARRAY_SIZE-1] = 0;
+
+
+
+    int startPos = 3;
+    int len = ;
+
+    arrayString newStr = substring(str, startPos, len);
+
     cout << "The string: " << str << endl;
-
-    cout << "Character at position " << 1 << " is " << characterAt(str, 1) << endl;
-
-    cout << "Before append: " << str << endl;
-    append(str, '!');
-    cout << "After append: " << str << endl;
-
-    arrayString str1 = new char[5];
-    str1[0] = 'T'; str1[1] = 'e'; str1[2] = 's'; str1[3] = 't'; str1[4] = 0;
-
-    arrayString strToAdd = new char[4];
-    strToAdd[0] = 'b'; strToAdd[1] = 'e'; strToAdd[2] = 'd'; strToAdd[3] = 0;
-
-    cout << "Before concatenate: " << str1 << endl;
-    cout << "String to add: " << strToAdd << endl;
-    concatenate(str1, strToAdd);
-    cout << "After concatenate: " << str1 << endl;
-    cout << (void*) str1 << " " << (void*)strToAdd << endl;
+    cout << "The substring: " << newStr << endl;
 
     cin.get();
     return 0;
 
 }
 
+
+arrayString substring(arrayString str, int startPos, int len)
+{
+    arrayString newStr = new char[len+1];
+
+    startPos--;
+
+    int strLength = length(str);
+
+    for (int i = 0; i < len; i++)
+    {
+        newStr[i] = str[i+startPos];
+    }
+    newStr[len] = 0;
+    return newStr;
+}
+
+
 char characterAt(arrayString str, int position)
 {
-    return str[position-1];
+    return str[position];
 }
 
 void append(arrayString &str, char ch)
