@@ -13,98 +13,157 @@ struct listNode {
 typedef listNode * intLinkedList;
 
 void printInteger(intLinkedList integer);
-intLinkedList intToList(int num);
+void addDigit(intLinkedList& integer, char charDigit);
 intLinkedList sumIntLists(intLinkedList integer1, intLinkedList integer2);
 void removeLinkedList(intLinkedList &head);
 
 int main()
 {
-    int num1 = 78;
-    int num2 = 14;
-    intLinkedList integer1 = intToList(num1);
-    intLinkedList integer2 = intToList(num2);
-    intLinkedList sum = sumIntLists(integer1, integer2);
+    char charDigit = 0;
+    intLinkedList integer1 = nullptr;
 
-    cout << "\nInteger one: ";
+    cout << "Type in a number:\n";
+    charDigit = cin.get();
+
+    while(charDigit != 10)
+    {
+        addDigit(integer1, charDigit);
+        charDigit = cin.get();
+    }
+    cout << "\nThe number is:\n";
     printInteger(integer1);
-    cout << "\nInteger two: ";
+
+
+
+    intLinkedList integer2 = nullptr;
+    charDigit = 0;
+    cout << "\nType in another number:\n";
+
+    charDigit = cin.get();
+    while(charDigit != 10)
+    {
+        addDigit(integer2, charDigit);
+        charDigit = cin.get();
+    }
+
+    cout << "\nThe number is:\n";
     printInteger(integer2);
-    cout << "\nTheir sum is: ";
-    printInteger(sum);
+
+    intLinkedList sumInteger = sumIntLists(integer1, integer2);
+
+    cout << "\nThe sum of the numbers is:\n";
+    printInteger(sumInteger);
 
     removeLinkedList(integer1);
     removeLinkedList(integer2);
-    removeLinkedList(sum);
+    removeLinkedList(sumInteger);
 
     cin.get();
     return 0;
 
 }
 
-// Exercise 4.9
-intLinkedList intToList(int num)
+
+void addDigit(intLinkedList& integer, char charDigit)
 {
-    if (num < 0)
+
+    if (charDigit < '0' || charDigit > '9')
     {
-        num = 0;
+        cout << "Wrong character" << endl;
+        return;
     }
+    int digit = charDigit - '0';
 
-    intLinkedList head = nullptr;
-
-    do {
-        listNode * newNode = new listNode;
-        newNode->num = num % 10;
-        num /= 10;
-        newNode->next = head;
-        head = newNode;
-    } while (num);
-
-    return head;
-}
-
-
-// Exercise 4.10
-intLinkedList sumIntLists(intLinkedList integer1, intLinkedList integer2)
-{
-    int num1 = 0;
-    int num2 = 0;
-    int sum = 0;
-
-
-    listNode * loopPtr = integer1;
-    while (loopPtr != nullptr)
-    {
-        num1 *= 10;
-        num1 += loopPtr->num;
-        loopPtr = loopPtr->next;
-    }
-
-    loopPtr = integer2;
-    while (loopPtr != nullptr)
-    {
-        num2 *= 10;
-        num2 += loopPtr->num;
-        loopPtr = loopPtr->next;
-    }
-
-    sum = num1 + num2;
-
-    return intToList(sum);
+    listNode * newNode = new listNode;
+    newNode->num = digit;
+    newNode->next = integer;
+    integer = newNode;
 }
 
 
 void printInteger(intLinkedList integer)
 {
     listNode * loopPtr = integer;
-    while (loopPtr != nullptr)
+    if (loopPtr != nullptr)
     {
+        printInteger(loopPtr->next);
         cout << loopPtr->num;
-        loopPtr = loopPtr->next;
     }
 }
 
+
+// Exercise 4.10
+intLinkedList sumIntLists(intLinkedList integer1, intLinkedList integer2)
+{
+    intLinkedList head;
+
+    int digit1 = 0;
+    int digit2 = 0;
+    int sumDigit = 0;
+
+
+    int extraVal = 0;
+
+    listNode * loopPtr1 = integer1;
+    listNode * loopPtr2 = integer2;
+
+    listNode * loopPtrSum = new listNode;
+    head = loopPtrSum;
+
+
+    while (loopPtr1 != nullptr || loopPtr2 != nullptr)
+    {
+        if (loopPtr1 != nullptr)
+        {
+            digit1 = loopPtr1->num;
+            loopPtr1 = loopPtr1->next;
+        }
+
+        if (loopPtr2 != nullptr)
+        {
+            digit2 = loopPtr2->num;
+            loopPtr2 = loopPtr2->next;
+        }
+
+        sumDigit = digit1 + digit2 + extraVal;
+        if (sumDigit >= 10)
+        {
+            extraVal = 1;
+            sumDigit = sumDigit - 10;
+        }
+        else
+        {
+            extraVal = 0;
+        }
+
+        loopPtrSum->num = sumDigit;
+
+        digit1 = digit2 = 0;
+
+        // Check if next digit exists
+        if (loopPtr1 != nullptr || loopPtr2 != nullptr || extraVal)
+        {
+            loopPtrSum->next = new listNode;
+        }
+        else
+        {
+            loopPtrSum->next = nullptr;
+        }
+        loopPtrSum = loopPtrSum->next;
+    }
+
+    if (extraVal)
+    {
+        loopPtrSum->num = 1;
+        loopPtrSum->next = nullptr;
+    }
+    return head;
+}
+
+
 void removeLinkedList(intLinkedList &head)
 {
+
     listNode * loopPtr = head;
     listNode * deleteNode;
 
@@ -117,6 +176,7 @@ void removeLinkedList(intLinkedList &head)
     head = nullptr;
     return;
 }
+
 
 
 

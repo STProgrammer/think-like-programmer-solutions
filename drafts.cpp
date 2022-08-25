@@ -1,34 +1,84 @@
 #include <iostream> //For cout
 #include <cstring>  //For the string functions
 #include <stdio.h>
+#include <iomanip>
+#define PRINT_TOKEN(token) printf(#token " is %d", token)
 
-using std::cout;
-using std::endl;
+using namespace std;
 
 //Do not run this
 
-struct test {
-    int num;
-    test * next;
+class TestA
+{
+        public:
+            int val = 0;
+
+            void test ();
+
 };
+
+
+void TestA::test()
+{
+    val = 15;
+    cout << val << "testA";
+}
+
+
+class TestB : public TestA
+{
+        public:
+           void test ();
+};
+
+
+
+
+void TestB::test()
+{
+    val = 45;
+    cout << val << "testB";
+}
+
+int testFunc(int x, int y);
+
+int testFunc(int x, int y)
+{
+    int z;
+    if (x > y) z = x++;
+    else return z = y++;
+}
 
 int main()
 {
-    test * loopPtr = nullptr;
-    test * head = nullptr;
 
 
-    loopPtr = new test;
-    head = loopPtr;
-    loopPtr->num = 14;
-    loopPtr->next = nullptr;
-    cout << head->num << endl;
-    loopPtr->next = new test;
-    loopPtr = loopPtr->next;
-    loopPtr->num = 89;
+    TestA * a = new TestB;
+    TestB * b = new TestB;
 
-    cout << head->next->num << endl;
+    b->test();
+    a->test();
 
+    int x = 11; int y = 3;
+
+    char str[15] = "asdasd" "sedsedse";
+
+    cout<<setfill('-')<<setw(15)<<left<<"wer"<<left<<"zxc"<<endl;
+    cout << setbase(16) << 466 << " " << 64 << endl;
+    cout << "Modulo operations" << endl;
+    cout << (x - ((x / y) * y)) << endl;
+    cout << x % y << endl;
+
+    PRINT_TOKEN(x+y);
+
+    int m = 5 + \
+            4;
+
+    int z = testFunc(x++, y++);
+
+    cout << "\n" << z;
+    cout << "\n" << y;
+    cout << "\n" << m;
 
 
     return 0;

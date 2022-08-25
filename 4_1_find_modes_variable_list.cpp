@@ -12,6 +12,7 @@ using std::endl;
 void append(int* &arr, int num, int arrSize);
 int * findModes(int arr[], const int ARR_SIZE);
 void printModes(int modesList[]);
+void resizeArray(int* &arr, int arrSize);
 
 int main()
 {
@@ -19,7 +20,7 @@ int main()
     int arraySize = 1;
 
 
-    int* numList = new int[1];
+    int* numList = new int[D_MAX_SIZE];
 
     cout << "This program finds mode of a list of integers.\n";
     cout << "Type in numbers to and press enter to fill the list, finish by entering -1.\n";
@@ -34,13 +35,18 @@ int main()
 
 
 
+
+
     while (num != -1 && arraySize < D_MAX_SIZE)
     {
-        append(numList, num, arraySize);
-        arraySize++;
+        numList[arraySize++] = num;
         cin >> num;
         cin.ignore();
     }
+
+    resizeArray(numList, arraySize);
+
+
 
     cout << "\nThe numbers in the list are:\n[";
 
@@ -62,6 +68,18 @@ int main()
 
     cin.get();
     return 0;
+}
+
+void resizeArray(int* &arr, int arrSize)
+{
+    int* newArr = new int[arrSize];
+
+    for (int i = 0; i < arrSize; i++)
+    {
+        newArr[i] = arr[i];
+    }
+    delete[] arr;
+    arr = newArr;
 }
 
 void append(int* &arr, int num, int arrSize)
